@@ -10,6 +10,7 @@ const http = require("http");
 const port = normalizePort(process.env.PORT || "4000");
 
 app.set("port", port);
+console.log(`App running on port: ${port}`);
 
 // Create HTTP server.
 const server = http.createServer(app);
@@ -25,7 +26,9 @@ mysqlConnection.connect(function (err) {
     console.error("error connecting: " + err.stack);
     return;
   }
-  console.log("mysqlConnection id " + mysqlConnection.threadId);
+  console.log(
+    `Connected to mysql database with id: ${mysqlConnection.threadId}`
+  );
 });
 
 // Check for database tables
